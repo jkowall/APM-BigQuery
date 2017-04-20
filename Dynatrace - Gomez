@@ -1,9 +1,14 @@
-SELECT table_name, count(*) AS counter
+SELECT "Dynatrace - Gomez" as Vendor , table_name, count(*) AS counter
 FROM 
+ (SELECT *, "Current" as table_name FROM [httparchive:runs.2017_04_01_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
+ //Missing run from 01/01 so used 12/15
+ (SELECT *, "2017" as table_name FROM [httparchive:runs.2016_12_15_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
  (SELECT *, "2016" as table_name FROM [httparchive:runs.2016_01_01_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
  (SELECT *, "2015" as table_name FROM [httparchive:runs.2015_01_01_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
  (SELECT *, "2014" as table_name FROM [httparchive:runs.2014_01_01_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
  (SELECT *, "2013" as table_name FROM [httparchive:runs.2013_01_01_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
  (SELECT *, "2012" as table_name FROM [httparchive:runs.2012_01_01_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
- (SELECT *, "2011" as table_name FROM [httparchive:runs.2011_01_31_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
-GROUP BY table_name;
+ (SELECT *, "2011" as table_name FROM [httparchive:runs.2011_01_20_requests] WHERE REGEXP_MATCH(url, r'(gomez).*\.js')), 
+ GROUP BY table_name
+ ORDER BY table_name desc;
+
