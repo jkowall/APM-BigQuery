@@ -7,4 +7,5 @@ FROM
  (SELECT *, "2015" as table_name FROM [httparchive:runs.2015_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
  (SELECT *, "2014" as table_name FROM [httparchive:runs.2014_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
  (SELECT *, "2013" as table_name FROM [httparchive:runs.2013_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
- GROUP BY table_name;
+ GROUP BY table_name
+ ORDER BY table_name desc;
