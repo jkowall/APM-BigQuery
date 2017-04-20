@@ -1,5 +1,7 @@
 SELECT table_name, count(*) AS counter
 FROM 
+ (SELECT *, "2017" as table_name FROM [httparchive:runs.2017_04_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2017" as table_name FROM [httparchive:runs.2017_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
  (SELECT *, "2016" as table_name FROM [httparchive:runs.2016_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
  (SELECT *, "2015" as table_name FROM [httparchive:runs.2015_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
  (SELECT *, "2014" as table_name FROM [httparchive:runs.2014_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
