@@ -1,0 +1,60 @@
+SELECT "Dynatrace Classic" as Vendor , table_name, count(*) AS counter
+FROM 
+ (SELECT *, "2020 Desktop" as table_name FROM httparchive.response_bodies.2020_01_01_desktop WHERE REGEXP_MATCH(url, r'(dtagent)')), 
+ (SELECT *, "2020 Mobile" as table_name FROM httparchive.response_bodies.2020_01_01_mobile WHERE REGEXP_MATCH(url, r'(dtagent)')), 
+ (SELECT *, "2019 Desktop" as table_name FROM httparchive.response_bodies.2019_01_01_desktop WHERE REGEXP_MATCH(url, r'(dtagent)')), 
+ (SELECT *, "2019 Mobile" as table_name FROM httparchive.response_bodies.2019_01_01_mobile WHERE REGEXP_MATCH(url, r'(dtagent)')), 
+ (SELECT *, "2018 Desktop" as table_name FROM httparchive.response_bodies.2018_01_01_desktop WHERE REGEXP_MATCH(url, r'(dtagent)')), 
+ (SELECT *, "2018 Mobile" as table_name FROM httparchive.response_bodies.2018_01_01_mobile WHERE REGEXP_MATCH(url, r'(dtagent)')),
+ (SELECT *, "2017 Desktop" as table_name FROM httparchive.response_bodies.2017_01_01_desktop WHERE REGEXP_MATCH(url, r'(dtagent)')),
+ (SELECT *, "2017 Mobile" as table_name FROM httparchive.response_bodies.2017_01_01_mobile WHERE REGEXP_MATCH(url, r'(dtagent)')),
+ (SELECT *, "2016 Desktop" as table_name FROM httparchive.response_bodies.2016_01_01_desktop WHERE REGEXP_MATCH(url, r'(dtagent)')),
+ (SELECT *, "2016 Mobile" as table_name FROM httparchive.response_bodies.2016_01_01_mobile WHERE REGEXP_MATCH(url, r'(dtagent)'))
+ GROUP BY table_name
+ ORDER BY table_name desc;
+
+ SELECT "Dynatrace Gomez" as Vendor , table_name, count(*) AS counter
+FROM 
+ (SELECT *, "2020 Desktop" as table_name FROM httparchive.response_bodies.2020_01_01_desktop WHERE REGEXP_MATCH(url, r'(gomez)')), 
+ (SELECT *, "2020 Mobile" as table_name FROM httparchive.response_bodies.2020_01_01_mobile WHERE REGEXP_MATCH(url, r'(gomez)')), 
+ (SELECT *, "2019 Desktop" as table_name FROM httparchive.response_bodies.2019_01_01_desktop WHERE REGEXP_MATCH(url, r'(gomez)')), 
+ (SELECT *, "2019 Mobile" as table_name FROM httparchive.response_bodies.2019_01_01_mobile WHERE REGEXP_MATCH(url, r'(gomez)')), 
+ (SELECT *, "2018 Desktop" as table_name FROM httparchive.response_bodies.2018_01_01_desktop WHERE REGEXP_MATCH(url, r'(gomez)')), 
+ (SELECT *, "2018 Mobile" as table_name FROM httparchive.response_bodies.2018_01_01_mobile WHERE REGEXP_MATCH(url, r'(gomez)')),
+ (SELECT *, "2017 Desktop" as table_name FROM httparchive.response_bodies.2017_01_01_desktop WHERE REGEXP_MATCH(url, r'(gomez)')),
+ (SELECT *, "2017 Mobile" as table_name FROM httparchive.response_bodies.2017_01_01_mobile WHERE REGEXP_MATCH(url, r'(gomez)')),
+ (SELECT *, "2016 Desktop" as table_name FROM httparchive.response_bodies.2016_01_01_desktop WHERE REGEXP_MATCH(url, r'(gomez)')),
+ (SELECT *, "2016 Mobile" as table_name FROM httparchive.response_bodies.2016_01_01_mobile WHERE REGEXP_MATCH(url, r'(gomez)'))
+ GROUP BY table_name
+ ORDER BY table_name desc;
+
+ SELECT "Dynatrace OneAgent" as Vendor , table_name, count(*) AS counter
+FROM 
+ (SELECT *, "2020 Desktop" as table_name FROM httparchive.response_bodies.2020_01_01_desktop WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')), 
+ (SELECT *, "2020 Mobile" as table_name FROM httparchive.response_bodies.2020_01_01_mobile WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')), 
+ (SELECT *, "2019 Desktop" as table_name FROM httparchive.response_bodies.2019_01_01_desktop WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')), 
+ (SELECT *, "2019 Mobile" as table_name FROM httparchive.response_bodies.2019_01_01_mobile WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')), 
+ (SELECT *, "2018 Desktop" as table_name FROM httparchive.response_bodies.2018_01_01_desktop WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')), 
+ (SELECT *, "2018 Mobile" as table_name FROM httparchive.response_bodies.2018_01_01_mobile WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')),
+ (SELECT *, "2017 Desktop" as table_name FROM httparchive.response_bodies.2017_01_01_desktop WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')),
+ (SELECT *, "2017 Mobile" as table_name FROM httparchive.response_bodies.2017_01_01_mobile WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')),
+ (SELECT *, "2016 Desktop" as table_name FROM httparchive.response_bodies.2016_01_01_desktop WHERE REGEXP_MATCH(url, r'(ruxitagentjs)')),
+ (SELECT *, "2016 Mobile" as table_name FROM httparchive.response_bodies.2016_01_01_mobile WHERE REGEXP_MATCH(url, r'(ruxitagentjs)'))
+ GROUP BY table_name
+ ORDER BY table_name desc;
+
+ SELECT "Dynatrace CDN Injection" as Vendor , table_name, count(*) AS counter
+FROM 
+ (SELECT *, "2020 Desktop" as table_name FROM httparchive.response_bodies.2020_01_01_desktop WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')), 
+ (SELECT *, "2020 Mobile" as table_name FROM httparchive.response_bodies.2020_01_01_mobile WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')), 
+ (SELECT *, "2019 Desktop" as table_name FROM httparchive.response_bodies.2019_01_01_desktop WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')), 
+ (SELECT *, "2019 Mobile" as table_name FROM httparchive.response_bodies.2019_01_01_mobile WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')), 
+ (SELECT *, "2018 Desktop" as table_name FROM httparchive.response_bodies.2018_01_01_desktop WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')), 
+ (SELECT *, "2018 Mobile" as table_name FROM httparchive.response_bodies.2018_01_01_mobile WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')),
+ (SELECT *, "2017 Desktop" as table_name FROM httparchive.response_bodies.2017_01_01_desktop WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')),
+ (SELECT *, "2017 Mobile" as table_name FROM httparchive.response_bodies.2017_01_01_mobile WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')),
+ (SELECT *, "2016 Desktop" as table_name FROM httparchive.response_bodies.2016_01_01_desktop WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)')),
+ (SELECT *, "2016 Mobile" as table_name FROM httparchive.response_bodies.2016_01_01_mobile WHERE REGEXP_MATCH(url, r'(js-cdn.dynatrace.com)'))
+ GROUP BY table_name
+ ORDER BY table_name desc;
+ 

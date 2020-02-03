@@ -1,5 +1,3 @@
-#Using Legacy BigQuery SQL, since nesting functions didn't work well in the current SQL
-
 SELECT "AppDynamics" as Vendor , table_name, count(*) AS counter
 FROM 
  (SELECT *, "2020 Desktop" as table_name FROM httparchive.response_bodies.2020_01_01_desktop WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
