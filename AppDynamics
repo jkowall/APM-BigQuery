@@ -1,11 +1,16 @@
+#Using Legacy BigQuery SQL, since nesting functions didn't work well in the current SQL
+
 SELECT "AppDynamics" as Vendor , table_name, count(*) AS counter
 FROM 
- (SELECT *, "Current" as table_name FROM [httparchive:runs.2017_04_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
- //Missing run from 01/01 so used 12/15
- (SELECT *, "2017" as table_name FROM [httparchive:runs.2016_12_15_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
- (SELECT *, "2016" as table_name FROM [httparchive:runs.2016_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
- (SELECT *, "2015" as table_name FROM [httparchive:runs.2015_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
- (SELECT *, "2014" as table_name FROM [httparchive:runs.2014_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
- (SELECT *, "2013" as table_name FROM [httparchive:runs.2013_01_01_requests] WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2020 Desktop" as table_name FROM httparchive.response_bodies.2020_01_01_desktop WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2020 Mobile" as table_name FROM httparchive.response_bodies.2020_01_01_mobile WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2019 Desktop" as table_name FROM httparchive.response_bodies.2019_01_01_desktop WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2019 Mobile" as table_name FROM httparchive.response_bodies.2019_01_01_mobile WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2018 Desktop" as table_name FROM httparchive.response_bodies.2018_01_01_desktop WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2018 Mobile" as table_name FROM httparchive.response_bodies.2018_01_01_mobile WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2017 Desktop" as table_name FROM httparchive.response_bodies.2017_01_01_desktop WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2017 Mobile" as table_name FROM httparchive.response_bodies.2017_01_01_mobile WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2016 Desktop" as table_name FROM httparchive.response_bodies.2016_01_01_desktop WHERE REGEXP_MATCH(url, r'(adrum).*\.js')), 
+ (SELECT *, "2016 Mobile" as table_name FROM httparchive.response_bodies.2016_01_01_mobile WHERE REGEXP_MATCH(url, r'(adrum).*\.js')) 
  GROUP BY table_name
  ORDER BY table_name desc;
